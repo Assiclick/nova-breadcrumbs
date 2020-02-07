@@ -1,5 +1,4 @@
 import CustomAttach from '@local/views/CustomAttach';
-import CustomCreate from '@local/views/CustomCreate';
 import CustomDashboard from '@local/views/CustomDashboard';
 import CustomIndex from '@local/views/CustomIndex';
 import CustomUpdate from '@local/views/CustomUpdate';
@@ -8,7 +7,6 @@ import CustomUpdateAttached from '@local/views/CustomUpdateAttached';
 Nova.booting((Vue, router) => {
 
     Vue.component('attach-view', require('./views/CustomAttach'));
-    Vue.component('create-view', require('./views/CustomCreate'));
     Vue.component('dashboard-view', require('./views/CustomDashboard'));
     Vue.component('edit-attached-view', require('./views/CustomUpdateAttached'));
     Vue.component('edit-view', require('./views/CustomUpdate'));
@@ -48,19 +46,6 @@ Nova.booting((Vue, router) => {
             path: '/resources/:resourceName',
             component: CustomIndex,
             props: true
-        },
-        {
-            name: 'custom-create',
-            path: '/resources/:resourceName/new',
-            component: CustomCreate,
-            props: route => {
-                return {
-                    resourceName: route.params.resourceName,
-                    viaResource: route.query.viaResource,
-                    viaResourceId: route.query.viaResourceId,
-                    viaRelationship: route.query.viaRelationship,
-                }
-            },
         },
         {
             name: 'custom-edit',
